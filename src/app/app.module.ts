@@ -13,40 +13,40 @@ import {LoginModule} from './modules/login/login.module';
 import {CsrfInterceptor} from './csrf.interceptor';
 import {CookieService} from 'ngx-cookie-service';
 import {DynamicFormModule} from './modules/dynamicform/dynamic.form.module';
-import {ErrorInterceptor} from "./expired.token.interceptor";
-import {ServiceCallWrapper} from "./service.call.wrapper";
+import {ErrorInterceptor} from './expired.token.interceptor';
+import {ServiceCallWrapper} from './service.call.wrapper';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    PageNotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    CommonModule,
-    FormsModule,
-    ProductModule,
-    DynamicFormModule,
-    LoginModule,
-    HttpClientModule,
-    AppRoutingModule // AppRoutingModule must be last, because it contains the most generic route matching patterns
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CsrfInterceptor,
-      multi: true
-    }, {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    },
-    CookieService,
-    ServiceCallWrapper
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        PageNotFoundComponent
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        ProductModule,
+        DynamicFormModule,
+        LoginModule,
+        HttpClientModule,
+        AppRoutingModule // AppRoutingModule must be last, because it contains the most generic route matching patterns
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: CsrfInterceptor,
+            multi: true
+        }, {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ErrorInterceptor,
+            multi: true
+        },
+        CookieService,
+        ServiceCallWrapper
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }
