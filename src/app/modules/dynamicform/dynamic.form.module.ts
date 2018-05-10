@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {DynamicFormRoutingModule} from './dynamic.form-routing.module';
 import {DynamicFormComponent} from './components/dynamic.form.component';
 import {DynamicFormService} from './dynamic.form.service';
-import {DynamicFormRouteGuard} from "./dynamic.form.route.guard";
+import {AuthRouteGuard} from "../../auth.route.guard";
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import {DynamicFormRouteGuard} from "./dynamic.form.route.guard";
   declarations: [
     DynamicFormComponent
   ],
-  providers: [DynamicFormService, DynamicFormRouteGuard]
+  providers: [DynamicFormService, AuthRouteGuard]
 })
 export class DynamicFormModule {
 }

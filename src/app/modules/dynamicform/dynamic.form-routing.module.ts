@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {DynamicFormComponent} from './components/dynamic.form.component';
-import {DynamicFormRouteGuard} from './dynamic.form.route.guard';
+import {AuthRouteGuard} from '../../auth.route.guard';
 
 const formRoutes: Routes = [
-  {path: 'forms', component: DynamicFormComponent, canActivate: [DynamicFormRouteGuard]},
+  {path: 'forms', component: DynamicFormComponent, canActivate: [AuthRouteGuard]},
   {path: 'form/:id', component: DynamicFormComponent}
 ];
 

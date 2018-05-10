@@ -3,80 +3,89 @@ import {JwtHelper} from 'angular2-jwt';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME, TOKEN_NAME} from '../../app.constants';
-import {Observable} from "rxjs/Observable";
+import {Observable} from 'rxjs/Observable';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class LoginService {
 
-  static AUTH_TOKEN = '/iam/oauth/token';
+    static AUTH_TOKEN = '/iam/oauth/token';
 
-  jwtHelper: JwtHelper = new JwtHelper();
-  accessToken: string;
-  isAdmin: boolean;
+    jwtHelper: JwtHelper = new JwtHelper();
+    accessToken: string;
+    isAdmin: boolean;
+    redirUrl: string;
 
-  constructor(private http: HttpClient) {
-  }
+    constructor(private http: HttpClient, private router: Router) {
+    }
 
-  login(username: string, password: string) {
+    redirectUrl(url: string) {
+        this.redirUrl = url;
+    }
 
-    console.log("log in!");
+    login(username: string, password: string) {
 
-    const body = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&grant_type=password`;
+        console.log('log in!');
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD),
-        'withCredentials': 'true'
-      })
-    };
+        const body = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&grant_type=password`;
 
-    this.http.post(LoginService.AUTH_TOKEN, body, httpOptions).subscribe(res => {
-        console.log(res);
-      },
-      error => {
-        console.log('error');
-      });
-  }
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD),
+                'withCredentials': 'true'
+            })
+        };
 
-  refreshAccessToken() : Observable<{}> {
+        this.http.post(LoginService.AUTH_TOKEN, body, httpOptions).subscribe(res => {
+                console.log(res);
+                if (this.redirUrl) {
+                    this.router.navigate([this.redirUrl]);
+                }
+            },
+            error => {
+                console.log('error');
+            });
+    }
 
-    console.log("refreshing!");
-    let params = new HttpParams();
-    const body = params.set('grant_type', 'refresh_token').set('bla', 'bla');
-    const options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD),
-        'withCredentials': 'true'
-      })
-    };
+    refreshAccessToken(): Observable<{}> {
 
-    return this.http.post(LoginService.AUTH_TOKEN, body, options);
-  }
+        console.log('refreshing!');
+        const params = new HttpParams();
+        const body = params.set('grant_type', 'refresh_token').set('bla', 'bla');
+        const options = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD),
+                'withCredentials': 'true'
+            })
+        };
 
-  processToken(accessToken: string) {
-    console.log('access token received');
-    const decodedToken = this.jwtHelper.decodeToken(accessToken);
-    console.log(decodedToken);
+        return this.http.post(LoginService.AUTH_TOKEN, body, options);
+    }
 
-    this.isAdmin = decodedToken.authorities.some(el => el === 'ADMIN_USER');
-    this.accessToken = accessToken;
+    processToken(accessToken: string) {
+        console.log('access token received');
+        const decodedToken = this.jwtHelper.decodeToken(accessToken);
+        console.log(decodedToken);
 
-    localStorage.setItem(TOKEN_NAME, accessToken);
-  }
+        this.isAdmin = decodedToken.authorities.some(el => el === 'ADMIN_USER');
+        this.accessToken = accessToken;
 
-  logout() {
-    this.accessToken = null;
-    this.isAdmin = false;
-    localStorage.removeItem(TOKEN_NAME);
-  }
+        localStorage.setItem(TOKEN_NAME, accessToken);
+    }
 
-  isAdminUser(): boolean {
-    return this.isAdmin;
-  }
+    logout() {
+        this.accessToken = null;
+        this.isAdmin = false;
+        localStorage.removeItem(TOKEN_NAME);
+    }
 
-  isUser(): boolean {
-    return this.accessToken && !this.isAdmin;
-  }
+    isAdminUser(): boolean {
+        return this.isAdmin;
+    }
+
+    isUser(): boolean {
+        return this.accessToken && !this.isAdmin;
+    }
 }
