@@ -1,12 +1,12 @@
 import {CanActivate, GuardsCheckEnd, NavigationStart, Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
 import {Injectable, state} from '@angular/core';
-import {LoginService} from './modules/login/login.service';
+import {AuthService} from './modules/shared/auth.service';
 
 @Injectable()
 export class AuthRouteGuard implements CanActivate {
 
-    constructor(private cookieService: CookieService, private router: Router, private loginService: LoginService) {
+    constructor(private cookieService: CookieService, private router: Router, private loginService: AuthService) {
         // Listen to router events
         this.router.events.subscribe((e) => {
             // see also
@@ -21,7 +21,6 @@ export class AuthRouteGuard implements CanActivate {
     }
 
     canActivate() {
-        const authenticated = this.cookieService.get('authenticated');
-        return authenticated === '1';
+        return this.loginService.isLoggedIn();
     }
 }

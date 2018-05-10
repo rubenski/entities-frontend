@@ -6,7 +6,7 @@ import 'rxjs/add/observable/interval'
 import 'rxjs/add/observable/of'
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/map';
-import {LoginService} from "../../login/login.service";
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   moduleId: module.id,
@@ -36,7 +36,7 @@ export class DynamicFormComponent implements OnInit {
 
   constructor(private dynamicFormService: DynamicFormService,
               private route: ActivatedRoute,
-              private loginService: LoginService) {
+              private loginService: AuthService) {
 
   }
 }

@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Credentials} from './credentials';
-import {LoginService} from '../login.service';
+import {AuthService} from '../../shared/auth.service';
 
 @Component({
   moduleId: module.id,
@@ -14,7 +14,7 @@ export class LoginComponent {
   private submitted = false;
 
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: AuthService) {
   }
 
   onSubmit() {

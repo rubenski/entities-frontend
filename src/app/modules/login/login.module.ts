@@ -3,7 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {LoginComponent} from './components/login.component';
-import {LoginService} from './login.service';
+import {AuthService} from '../shared/auth.service';
 
 @NgModule({
   imports: [
@@ -14,7 +14,7 @@ import {LoginService} from './login.service';
   declarations: [
     LoginComponent
   ],
-  providers: [LoginService]
+  providers: [AuthService]
 })
 export class LoginModule {
 }

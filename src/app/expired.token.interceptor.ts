@@ -3,7 +3,7 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import {Observable} from 'rxjs/Observable';
 import {Injectable, Injector} from '@angular/core';
-import {LoginService} from './modules/login/login.service';
+import {AuthService} from './modules/shared/auth.service';
 import {Router} from '@angular/router';
 import * as Rx from 'rxjs/Rx';
 
@@ -24,7 +24,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           this.router.navigate(['login']);
         } else {
           console.log('Refresh token in interceptor');
-          const loginService = this.injector.get(LoginService);
+          const loginService = this.injector.get(AuthService);
           loginService.refreshAccessToken().subscribe(res => {
             console.log('returned');
           });

@@ -1,13 +1,13 @@
 import 'rxjs/add/operator/catch';
 import {Observable} from "rxjs/Observable";
-import {LoginService} from "./modules/login/login.service";
+import {AuthService} from "./modules/shared/auth.service";
 import {Injectable} from "@angular/core";
 import {HttpResponse} from "@angular/common/http";
 
 @Injectable()
 export class ServiceCallWrapper {
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: AuthService) {
   }
 
   callWithAutoTokenRefresh(o: Observable<{}>): Observable<{}> {
