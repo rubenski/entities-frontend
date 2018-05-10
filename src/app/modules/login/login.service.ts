@@ -41,6 +41,10 @@ export class LoginService {
                 console.log(res);
                 if (this.redirUrl) {
                     this.router.navigate([this.redirUrl]);
+                    // Clear redirect url after redirecting
+                    this.redirUrl = null;
+                } else {
+                    this.router.navigate(["/"]);
                 }
             },
             error => {
