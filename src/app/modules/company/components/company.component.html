@@ -1,0 +1,124 @@
+<div class="container">
+    {{diagnostic}}
+    <h1>Inschrijven</h1>
+    <form #companyForm="ngForm">
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="name">Bedrijfsnaam</label>
+                    <input #name="ngModel" name="name" [(ngModel)]="model.name" type="text" class="form-control"
+                           id="name" required>
+                    <div [hidden]="name.valid || name.pristine"
+                         class="alert alert-danger">
+                        Naam is een verplicht veld
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-6">
+                <label for="street">Straat</label>
+                <input #street="ngModel" name="street" [(ngModel)]="model.street" type="text" class="form-control" id="street"
+                       required>
+                <div [hidden]="street.valid || street.pristine"
+                     class="alert alert-danger">
+                    Straat is een verplicht veld
+                </div>
+            </div>
+            <div class="col-3">
+                <label for="street">Huisnummer</label>
+                <input #number="ngModel" name="number" [(ngModel)]="model.number" type="text" class="form-control" id="number"
+                       required>
+                <div [hidden]="number.valid || number.pristine"
+                     class="alert alert-danger">
+                    Huisnummer is een verplicht veld
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="zip">Postcode</label>
+                    <input #zip="ngModel" name="zip" [(ngModel)]="model.zip" type="text" class="form-control" id="zip" required>
+                    <div [hidden]="zip.valid || zip.pristine"
+                         class="alert alert-danger">
+                        Postcode is een verplicht veld
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="phone">Telefoonnummer</label>
+                    <input #phone="ngModel" name="phone" [(ngModel)]="model.phone" type="text" class="form-control" id="phone" required>
+                    <div [hidden]="phone.valid || phone.pristine"
+                         class="alert alert-danger">
+                        Telefoonnummer is een verplicht veld
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input #email="ngModel" name="email" [(ngModel)]="model.email" type="text" class="form-control" id="email" required>
+                    <div [hidden]="email.valid || email.pristine"
+                         class="alert alert-danger">
+                        Email is een verplicht veld
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="commerceNumber">KVK-nummer</label>
+                    <input #commerceNumber="ngModel" name="commerceNumber" [(ngModel)]="model.commerceNumber" type="text" class="form-control"
+                           id="commerceNumber" required>
+                    <div [hidden]="commerceNumber.valid || commerceNumber.pristine"
+                         class="alert alert-danger">
+                        KVK-nummer is een verplicht veld
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="country">Land</label>
+                    <select #country="ngModel" name="country" [(ngModel)]="model.country" class="form-control" id="country" required>
+                        <option *ngFor="let country of countries" [value]="country.code">
+                            {{country.name}}
+                        </option>
+                    </select>
+                    <div [hidden]="country.valid || country.pristine"
+                         class="alert alert-danger">
+                        Land is een verplicht veld
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="website">Website</label>
+                    <input name="website" [(ngModel)]="model.website" type="text" class="form-control" id="website">
+                </div>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Submit</button>
+
+    </form>
+</div>
