@@ -5,6 +5,8 @@ import {AuthRouteGuard} from '../../auth.route.guard';
 import {CompanyService} from './company.service';
 import {CompanyComponent} from './components/company.component';
 import {CompanyRoutingModule} from './company.routing.module';
+import {CompanyEmailValidator} from './company.email.validator';
+
 
 @NgModule({
     imports: [
@@ -13,7 +15,8 @@ import {CompanyRoutingModule} from './company.routing.module';
         CompanyRoutingModule
     ],
     declarations: [
-        CompanyComponent
+        CompanyComponent,
+        CompanyEmailValidator
     ],
     providers: [CompanyService, AuthRouteGuard]
 })

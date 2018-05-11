@@ -68,10 +68,12 @@
             <div class="col-9">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input #email="ngModel" name="email" [(ngModel)]="model.email" type="text" class="form-control" id="email" required>
-                    <div [hidden]="email.valid || email.pristine"
-                         class="alert alert-danger">
+                    <input appCompanyEmail #companyEmail="ngModel" name="email" [(ngModel)]="model.email" type="text" class="form-control" id="email" required>
+                    <div [hidden]="companyEmail.valid || companyEmail.pristine || companyEmail.errors?.companyEmail" class="alert alert-danger">
                         Email is een verplicht veld
+                    </div>
+                    <div *ngIf="companyEmail.dirty && companyEmail.errors?.companyEmail" class="alert alert-danger">
+                        {{companyEmail.errors.companyEmail}}
                     </div>
                 </div>
             </div>
@@ -118,7 +120,7 @@
         </div>
 
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success" [disabled]="!companyForm.form.valid">Next</button>
 
     </form>
 </div>
