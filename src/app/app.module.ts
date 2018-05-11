@@ -15,6 +15,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {DynamicFormModule} from './modules/dynamicform/dynamic.form.module';
 import {ErrorInterceptor} from './expired.token.interceptor';
 import {ServiceCallWrapper} from './service.call.wrapper';
+import {CompanyModule} from './modules/company/company.module';
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import {ServiceCallWrapper} from './service.call.wrapper';
         FormsModule,
         ProductModule,
         DynamicFormModule,
+        CompanyModule,
         LoginModule,
         HttpClientModule,
         AppRoutingModule // AppRoutingModule must be last, because it contains the most generic route matching patterns
