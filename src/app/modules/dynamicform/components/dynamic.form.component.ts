@@ -2,11 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import {DynamicFormService} from '../dynamic.form.service';
-import 'rxjs/add/observable/interval'
-import 'rxjs/add/observable/of'
+import 'rxjs/add/observable/interval';
+import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/map';
-import {AuthService} from "../../shared/auth.service";
+import {AuthService} from '../../shared/auth.service';
 
 @Component({
   moduleId: module.id,
@@ -25,11 +25,11 @@ export class DynamicFormComponent implements OnInit {
       console.log(params);
       console.log('dyn forms');
 
-      let source2 = this.dynamicFormService.findForMe();
+      const source2 = this.dynamicFormService.findForMe();
 
       source2.subscribe(
         value => this.form$ = value,
-        error => console.log("error occurred: " + error)
+        error => console.log('error occurred: ' + error)
       );
     });
   }
