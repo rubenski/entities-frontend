@@ -9,21 +9,22 @@ import {Company} from '../company';
 })
 export class CompanyComponent implements OnInit {
 
-    // private countries: Map<string, string> = new Map();
-    private countries = [{code: 'NLD', name: 'Netherlands'}];
-    public model: Company = new Company();
+    public countries = [{code: 'NLD', name: 'Netherlands'}];
+    public company: Company = Company.prefilled();
 
     constructor(private companyService: CompanyService) {
 
     }
 
     ngOnInit(): void {
-
-
     }
 
     get diagnostic() {
-        return JSON.stringify(this.model);
+        return JSON.stringify(this.company);
+    }
+
+    submitForm(): void {
+        this.companyService.put(this.company);
     }
 
 
