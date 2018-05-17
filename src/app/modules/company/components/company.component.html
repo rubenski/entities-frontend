@@ -117,7 +117,7 @@
                 <div class="form-group">
                     <label for="website">Website</label>
                     <input name="website" [(ngModel)]="company.website" type="text" class="form-control" id="website"
-                        pattern="[\d\w\s!?-_@%&+./]{4,40}">
+                        pattern="[\d\w._-]{2,40}(\.[\w]{2,3}){1,2}">
                 </div>
             </div>
         </div>
