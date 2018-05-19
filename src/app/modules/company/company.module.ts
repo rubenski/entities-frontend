@@ -5,7 +5,10 @@ import {AuthRouteGuard} from '../../auth.route.guard';
 import {CompanyService} from './company.service';
 import {CompanyComponent} from './components/company.component';
 import {CompanyRoutingModule} from './company.routing.module';
-import {CompanyEmailValidator} from './company.email.validator';
+import {CompanyEmailValidatorDirective} from './company.email.validator.directive';
+import {PasswordConfirmationValidatorDirective} from './pasword.confirmation.validator.directive';
+
+
 
 
 @NgModule({
@@ -16,7 +19,8 @@ import {CompanyEmailValidator} from './company.email.validator';
     ],
     declarations: [
         CompanyComponent,
-        CompanyEmailValidator
+        CompanyEmailValidatorDirective,
+        PasswordConfirmationValidatorDirective
     ],
     providers: [CompanyService, AuthRouteGuard]
 })

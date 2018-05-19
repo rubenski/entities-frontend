@@ -4,9 +4,9 @@ import {FormControl, NG_VALIDATORS, ValidationErrors, Validator} from '@angular/
 @Directive({
     selector: '[appCompanyEmail]',
     providers: [
-        {provide: NG_VALIDATORS, useExisting: CompanyEmailValidator, multi: true}]
+        {provide: NG_VALIDATORS, useExisting: CompanyEmailValidatorDirective, multi: true}]
 })
-export class CompanyEmailValidator implements Validator {
+export class CompanyEmailValidatorDirective implements Validator {
 
     constructor(private el: ElementRef) {
         // el.nativeElement.style.backgroundColor = 'black';
@@ -14,8 +14,8 @@ export class CompanyEmailValidator implements Validator {
 
     static validateCompanyEmail(control: FormControl): ValidationErrors {
 
-        if (!CompanyEmailValidator.isValidEmailFormat(control.value)) {
-            return { companyEmail: 'Company email invalid'};
+        if (!CompanyEmailValidatorDirective.isValidEmailFormat(control.value)) {
+            return { companyEmail: 'Email ongeldig'};
         } else {
            // Implement service call here.... we want to know whether the email already exists
         }
@@ -29,7 +29,7 @@ export class CompanyEmailValidator implements Validator {
 
 
     validate(control: FormControl): { [key: string]: any; } {
-        return CompanyEmailValidator.validateCompanyEmail(control);
+        return CompanyEmailValidatorDirective.validateCompanyEmail(control);
     }
 
     registerOnValidatorChange?(fn: () => void): void {
