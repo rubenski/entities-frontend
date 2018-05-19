@@ -9,11 +9,6 @@ export class PasswordConfirmationValidatorDirective implements Validator, OnChan
 
     @Input('appPwField') appPwField: string;
 
-    fuck() {
-        console.log('wtf');
-    }
-
-
     validate(control: AbstractControl): {[key: string]: any} {
 
         const parent = control.parent;
@@ -23,8 +18,6 @@ export class PasswordConfirmationValidatorDirective implements Validator, OnChan
             : null;
     }
 
-    registerOnValidatorChange(fn: () => void): void { this.fuck = fn; }
-
     pwValidator(nameRe: RegExp): ValidatorFn {
         return (control: AbstractControl): {[key: string]: any} => {
             const forbidden = nameRe.test(control.value);
@@ -33,7 +26,7 @@ export class PasswordConfirmationValidatorDirective implements Validator, OnChan
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        this.fuck();
+        return null;
     }
 
 }
