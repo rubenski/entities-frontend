@@ -119,7 +119,7 @@
     </div>
     <div id="step2" *ngIf="step == 2">
         <h1>Account</h1>
-        <form #companyForm="ngForm" (ngSubmit)="goToStep()">
+        <form #accountForm="ngForm" (ngSubmit)="submitForm()">
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
@@ -141,7 +141,7 @@
                     <div class="form-group">
                         <label for="password">Wachtwoord</label>
                         <input #password="ngModel" name="password" [(ngModel)]="account.password"
-                               type="password" class="form-control" id="password" required (keyup)="passwordChanged(companyForm)">
+                               type="password" class="form-control" id="password" required (keyup)="passwordChanged(accountForm)">
                         <div [hidden]="password.valid || password.pristine || password.errors?.password"
                              class="alert alert-danger">
                             Wachtwoord moet minimaal 8 tekens lang zijn en een hoofdleter en cijfer bevatten
@@ -163,6 +163,7 @@
             </div>
 
             <button type="submit" class="btn btn-success" (click)="goToStep(1)">Vorige</button>
+            <button type="submit" class="btn btn-success" [disabled]="!accountForm.form.valid">Verzenden</button>
 
         </form>
     </div>

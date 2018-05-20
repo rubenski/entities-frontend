@@ -29,4 +29,8 @@ export class SignupComponent implements OnInit {
     goToStep(step): void {
        this.step = step;
     }
+
+    submitForm() {
+
+    }
 }
