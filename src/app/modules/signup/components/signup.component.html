@@ -152,14 +152,13 @@
                 <div class="col-9">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input appAccountAvailable appEmailValid #companyEmail="ngModel" name="email" [(ngModel)]="company.email"
+                        <input appAccountAvailable appEmailValid #email="ngModel" name="email" [(ngModel)]="account.email"
                                type="text" class="form-control" id="email" required>
-                        <div [hidden]="companyEmail.valid || companyEmail.pristine || companyEmail.errors?.companyEmail"
-                             class="alert alert-danger">
+                        <div [hidden]="email.valid || email.pristine || email.errors?.wrongFormat" class="alert alert-danger">
                             Email is ongeldig
                         </div>
-                        <div *ngIf="companyEmail.dirty && companyEmail.errors?.companyEmail" class="alert alert-danger">
-                            {{companyEmail.errors.companyEmail}}
+                        <div *ngIf="email.dirty && email.errors?.accountExists" class="alert alert-danger">
+                            {{email.errors.accountExists}}
                         </div>
                     </div>
                 </div>

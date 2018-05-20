@@ -16,7 +16,7 @@ export class EmailValidatorDirective implements Validator {
 
     static validateCompanyEmail(control: FormControl): ValidationErrors {
         if (!EmailValidatorDirective.isValidEmailFormat(control.value)) {
-            return {companyEmail: 'Email ongeldig'};
+            return {wrongFormat: 'Email ongeldig'};
         }
         return null;
     }
