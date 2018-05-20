@@ -127,6 +127,30 @@
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
+                        <label for="firstName">Voornaam</label>
+                        <input #firstName="ngModel" name="firstName" [(ngModel)]="account.firstName"
+                               type="text" class="form-control" id="firstName" required pattern="[\w\s-`]{2,20}">
+                        <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
+                            Voornaam is ongeldig
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
+                        <label for="lastName">Achternaam</label>
+                        <input #lastName="ngModel" name="lastName" [(ngModel)]="account.lastName"
+                               type="text" class="form-control" id="lastName" required pattern="[\w\s]{2,20}">
+                        <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
+                            Achternaam is ongeldig
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
                         <label for="email">Email</label>
                         <input appAccountExists appEmailValid #companyEmail="ngModel" name="email" [(ngModel)]="company.email"
                                type="text" class="form-control" id="email" required>
@@ -148,7 +172,7 @@
                                type="password" class="form-control" id="password" required (keyup)="passwordChanged(accountForm)" pattern="[\d\w+=_)(*&!$%,.@#/}{\^-]{8,20}">
                         <div [hidden]="password.valid || password.pristine || password.errors?.password"
                              class="alert alert-danger">
-                            Wachtwoord moet minimaal 8 tekens lang zijn en een hoofdleter en cijfer bevatten
+                            Wachtwoord moet minimaal 8 tekens lang zijn
                         </div>
                     </div>
                 </div>
