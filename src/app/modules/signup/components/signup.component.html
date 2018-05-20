@@ -31,10 +31,10 @@
                     <label for="street">Huisnummer</label>
                     <input #number="ngModel" name="number" [(ngModel)]="company.number" type="text" class="form-control"
                            id="number"
-                           required pattern="[\d\w\s]{3,40}">
+                           required pattern="[\d\w]{3,40}">
                     <div [hidden]="number.valid || number.pristine"
                          class="alert alert-danger">
-                        Huisnummer is een verplicht veld
+                        Huisnummer is ongeldig
                     </div>
                 </div>
             </div>
@@ -45,10 +45,10 @@
                         <label for="zip">Postcode</label>
                         <input #zip="ngModel" name="zip" [(ngModel)]="company.zip" type="text" class="form-control"
                                id="zip"
-                               required pattern="[\d\w\s]{4,10}">
+                               required pattern="[\d]{4}[\w]{2}">
                         <div [hidden]="zip.valid || zip.pristine"
                              class="alert alert-danger">
-                            Postcode is een verplicht veld
+                            Postcode is ongeldig
                         </div>
                     </div>
                 </div>
@@ -59,10 +59,10 @@
                     <div class="form-group">
                         <label for="phone">Telefoonnummer</label>
                         <input #phone="ngModel" name="phone" [(ngModel)]="company.phone" type="text"
-                               class="form-control" id="phone" required>
+                               class="form-control" id="phone" required pattern="[\d\s+]{4,15}">
                         <div [hidden]="phone.valid || phone.pristine"
                              class="alert alert-danger">
-                            Telefoonnummer is een verplicht veld
+                            Telefoonnummer is ongeldig
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                                id="commerceNumber" required pattern="[\d\w.#-]{4,40}">
                         <div [hidden]="commerceNumber.valid || commerceNumber.pristine"
                              class="alert alert-danger">
-                            KVK-nummer is een verplicht veld
+                            KVK-nummer is ongeldig
                         </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                         </select>
                         <div [hidden]="country.valid || country.pristine"
                              class="alert alert-danger">
-                            Land is een verplicht veld
+                            Land is ongeldig
                         </div>
                     </div>
                 </div>
@@ -106,9 +106,13 @@
                 <div class="col-9">
                     <div class="form-group">
                         <label for="website">Website</label>
-                        <input name="website" [(ngModel)]="company.website" type="text" class="form-control"
+                        <input #website="ngModel" name="website" [(ngModel)]="company.website" type="text" class="form-control"
                                id="website"
-                               pattern="[\d\w._-]{2,40}(\.[\w]{2,3}){1,2}">
+                               pattern="^(http://|https://)?[\d\w._-]{2,40}(\.[\w]{2,3}){1,2}">
+                    </div>
+                    <div [hidden]="website.valid || website.pristine"
+                         class="alert alert-danger">
+                        Website is ongeldig
                     </div>
                 </div>
             </div>
@@ -141,7 +145,7 @@
                     <div class="form-group">
                         <label for="password">Wachtwoord</label>
                         <input #password="ngModel" name="password" [(ngModel)]="account.password"
-                               type="password" class="form-control" id="password" required (keyup)="passwordChanged(accountForm)">
+                               type="password" class="form-control" id="password" required (keyup)="passwordChanged(accountForm)" pattern="[\d\w+=_)(*&!$%,.@#/}{\^-]{8,20}">
                         <div [hidden]="password.valid || password.pristine || password.errors?.password"
                              class="alert alert-danger">
                             Wachtwoord moet minimaal 8 tekens lang zijn en een hoofdleter en cijfer bevatten
