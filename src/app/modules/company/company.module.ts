@@ -7,6 +7,7 @@ import {CompanyComponent} from './components/company.component';
 import {CompanyRoutingModule} from './company.routing.module';
 import {CompanyEmailValidatorDirective} from './company.email.validator.directive';
 import {PasswordConfirmationValidatorDirective} from './pasword.confirmation.validator.directive';
+import {FieldMatchesValidatorDirective} from './fieldMatches.validator.directive';
 
 
 
@@ -20,7 +21,8 @@ import {PasswordConfirmationValidatorDirective} from './pasword.confirmation.val
     declarations: [
         CompanyComponent,
         CompanyEmailValidatorDirective,
-        PasswordConfirmationValidatorDirective
+        PasswordConfirmationValidatorDirective,
+        FieldMatchesValidatorDirective
     ],
     providers: [CompanyService, AuthRouteGuard]
 })

@@ -19,6 +19,10 @@ export class CompanyComponent implements OnInit {
 
     }
 
+    passwordChanged(form) {
+        form.controls.ww2.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+    }
+
     ngOnInit(): void {
     }
 

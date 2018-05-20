@@ -141,7 +141,7 @@
                     <div class="form-group">
                         <label for="ww">Wachtwoord</label>
                         <input #ww="ngModel" name="ww" [(ngModel)]="account.ww"
-                               type="password" class="form-control" id="ww" required>
+                               type="password" class="form-control" id="ww" required (keyup)="passwordChanged(companyForm)">
                         <div [hidden]="ww.valid || ww.pristine || ww.errors?.ww"
                              class="alert alert-danger">
                             Wachtwoord moet minimaal 8 tekens lang zijn en een hoofdleter en cijfer bevatten
@@ -153,7 +153,7 @@
                 <div class="col-9">
                     <div class="form-group">
                         <label for="ww2">Bevestiging wachtwoord</label>
-                        <input  appPwField="ww" #ww2="ngModel" name="ww2" [(ngModel)]="account.ww2" type="password" class="form-control"
+                        <input #ww2="ngModel" name="ww2" [(ngModel)]="account.ww2" [appFieldMatches]="ww" type="password" class="form-control"
                                 id="ww2" required>
                         <div [hidden]="ww2.valid || ww2.pristine" class="alert alert-danger">
                             Wachtwoorden zijn niet gelijk
