@@ -152,7 +152,7 @@
                 <div class="col-9">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input appAccountExists appEmailValid #companyEmail="ngModel" name="email" [(ngModel)]="company.email"
+                        <input appAccountAvailable appEmailValid #companyEmail="ngModel" name="email" [(ngModel)]="company.email"
                                type="text" class="form-control" id="email" required>
                         <div [hidden]="companyEmail.valid || companyEmail.pristine || companyEmail.errors?.companyEmail"
                              class="alert alert-danger">
@@ -180,11 +180,11 @@
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
-                        <label for="confirmPassword">Bevestiging wachtwoord</label>
+                        <label for="confirmPassword">Bevestig wachtwoord</label>
                         <input #confirmPassword="ngModel" name="confirmPassword" [(ngModel)]="account.confirmPassword" [appFieldMatches]="password" type="password" class="form-control"
                                id="confirmPassword" required>
                         <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
-                            Wachtwoorden zijn niet gelijk
+                            Wachtwoorden komen niet overeen
                         </div>
                     </div>
                 </div>
