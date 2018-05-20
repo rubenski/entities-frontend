@@ -74,7 +74,7 @@
                         <label for="commerceNumber">KVK-nummer</label>
                         <input #commerceNumber="ngModel" name="commerceNumber" [(ngModel)]="company.commerceNumber"
                                type="text" class="form-control"
-                               id="commerceNumber" required pattern="[\d\w\s.#-]{4,40}">
+                               id="commerceNumber" required pattern="[\d\w.#-]{4,40}">
                         <div [hidden]="commerceNumber.valid || commerceNumber.pristine"
                              class="alert alert-danger">
                             KVK-nummer is een verplicht veld
