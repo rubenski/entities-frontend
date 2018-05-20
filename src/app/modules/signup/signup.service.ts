@@ -1,12 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {TOKEN_AUTH_PASSWORD, TOKEN_AUTH_USERNAME} from '../../app.constants';
-import {Company} from './company';
-import {AccountExists} from "./account.exists";
+import {AccountExists} from './account.exists';
+import {SignUpForm} from './signup.form';
 
 @Injectable()
 export class SignupService {
-
 
     private static HTTP_DEFAULT_OPTIONS = {
         headers: new HttpHeaders({
@@ -23,13 +22,8 @@ export class SignupService {
     constructor(private http: HttpClient) {
     }
 
-    saveCompany(company: Company) {
-        this.http.put(SignupService.FORM_SUBMIT_URL, company, SignupService.HTTP_DEFAULT_OPTIONS).subscribe(res => {
-                console.log('success: ' + res);
-            },
-            error => {
-                console.log('error: ' + error);
-            });
+    signUp(signUpForm: SignUpForm) {
+        return this.http.put(SignupService.FORM_SUBMIT_URL, signUpForm, SignupService.HTTP_DEFAULT_OPTIONS);
     }
 
     accountExists(email: string) {
