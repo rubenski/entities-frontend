@@ -2,15 +2,13 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {AuthRouteGuard} from '../../auth.route.guard';
-import {CompanyService} from './company.service';
+import {SignupService} from './signup.service';
 import {SignupComponent} from './components/signup.component';
 import {SignupRoutingModule} from './signup.routing.module';
-import {AccountEmailValidatorDirective} from './account.email.validator.directive';
+import {AccountAvailableValidatorDirective} from './account.available.validator.directive';
 import {PasswordConfirmationValidatorDirective} from './pasword.confirmation.validator.directive';
 import {FieldMatchesValidatorDirective} from './fieldMatches.validator.directive';
-
-
-
+import {EmailValidatorDirective} from './email.validator.directive';
 
 @NgModule({
     imports: [
@@ -20,11 +18,12 @@ import {FieldMatchesValidatorDirective} from './fieldMatches.validator.directive
     ],
     declarations: [
         SignupComponent,
-        AccountEmailValidatorDirective,
+        AccountAvailableValidatorDirective,
         PasswordConfirmationValidatorDirective,
-        FieldMatchesValidatorDirective
+        FieldMatchesValidatorDirective,
+        EmailValidatorDirective
     ],
-    providers: [CompanyService, AuthRouteGuard]
+    providers: [SignupService, AuthRouteGuard]
 })
 export class CompanyModule {
 }

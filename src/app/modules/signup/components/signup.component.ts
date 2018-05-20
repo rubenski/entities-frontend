@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CompanyService} from '../company.service';
 import {Company} from '../company';
 import {Account} from '../account';
 
@@ -14,10 +13,6 @@ export class SignupComponent implements OnInit {
     public company: Company = Company.prefilled();
     public account: Account = new Account();
     public step = 1; // start at step 1
-
-    constructor(private companyService: CompanyService) {
-
-    }
 
     // Triggers validation  on the password confirmation field when the user changes the 'first' password
     passwordChanged(form) {
