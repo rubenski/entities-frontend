@@ -5,15 +5,15 @@ import {Account} from '../account';
 
 @Component({
     moduleId: module.id,
-    templateUrl: './company.component.html',
-    styleUrls: ['./company.component.css']
+    templateUrl: './signup.component.html',
+    styleUrls: ['./signup.component.css']
 })
-export class CompanyComponent implements OnInit {
+export class SignupComponent implements OnInit {
 
     public countries = [{code: 'NLD', name: 'Netherlands'}];
     public company: Company = Company.prefilled();
     public account: Account = new Account();
-    public step = 1;
+    public step = 1; // start at step 1
 
     constructor(private companyService: CompanyService) {
 

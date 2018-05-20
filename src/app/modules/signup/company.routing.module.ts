@@ -2,11 +2,11 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 
 import {AuthRouteGuard} from '../../auth.route.guard';
-import {CompanyComponent} from './components/company.component';
+import {SignupComponent} from './components/signup.component';
 
 const formRoutes: Routes = [
-    {path: 'signup', component: CompanyComponent},
-    {path: 'company/edit', component: CompanyComponent, canActivate: [AuthRouteGuard]}
+    {path: 'signup', component: SignupComponent},
+    {path: 'company/edit', component: SignupComponent, canActivate: [AuthRouteGuard]}
 ];
 
 @NgModule({
