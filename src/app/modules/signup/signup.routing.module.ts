@@ -17,5 +17,5 @@ const formRoutes: Routes = [
         RouterModule
     ]
 })
-export class CompanyRoutingModule {
+export class SignupRoutingModule {
 }

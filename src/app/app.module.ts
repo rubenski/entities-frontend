@@ -15,7 +15,7 @@ import {CookieService} from 'ngx-cookie-service';
 import {DynamicFormModule} from './modules/dynamicform/dynamic.form.module';
 import {ErrorInterceptor} from './expired.token.interceptor';
 import {ServiceCallWrapper} from './service.call.wrapper';
-import {CompanyModule} from './modules/signup/company.module';
+import {CompanyModule} from './modules/signup/signup.module';
 
 @NgModule({
     declarations: [

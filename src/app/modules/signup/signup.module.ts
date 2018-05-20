@@ -4,8 +4,8 @@ import {FormsModule} from '@angular/forms';
 import {AuthRouteGuard} from '../../auth.route.guard';
 import {CompanyService} from './company.service';
 import {SignupComponent} from './components/signup.component';
-import {CompanyRoutingModule} from './company.routing.module';
-import {CompanyEmailValidatorDirective} from './company.email.validator.directive';
+import {SignupRoutingModule} from './signup.routing.module';
+import {AccountEmailValidatorDirective} from './account.email.validator.directive';
 import {PasswordConfirmationValidatorDirective} from './pasword.confirmation.validator.directive';
 import {FieldMatchesValidatorDirective} from './fieldMatches.validator.directive';
 
@@ -16,11 +16,11 @@ import {FieldMatchesValidatorDirective} from './fieldMatches.validator.directive
     imports: [
         CommonModule,
         FormsModule,
-        CompanyRoutingModule
+        SignupRoutingModule
     ],
     declarations: [
         SignupComponent,
-        CompanyEmailValidatorDirective,
+        AccountEmailValidatorDirective,
         PasswordConfirmationValidatorDirective,
         FieldMatchesValidatorDirective
     ],
