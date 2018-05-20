@@ -139,10 +139,10 @@
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
-                        <label for="ww">Wachtwoord</label>
-                        <input #ww="ngModel" name="ww" [(ngModel)]="account.ww"
-                               type="password" class="form-control" id="ww" required (keyup)="passwordChanged(companyForm)">
-                        <div [hidden]="ww.valid || ww.pristine || ww.errors?.ww"
+                        <label for="password">Wachtwoord</label>
+                        <input #password="ngModel" name="password" [(ngModel)]="account.password"
+                               type="password" class="form-control" id="password" required (keyup)="passwordChanged(companyForm)">
+                        <div [hidden]="password.valid || password.pristine || password.errors?.password"
                              class="alert alert-danger">
                             Wachtwoord moet minimaal 8 tekens lang zijn en een hoofdleter en cijfer bevatten
                         </div>
@@ -152,10 +152,10 @@
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
-                        <label for="ww2">Bevestiging wachtwoord</label>
-                        <input #ww2="ngModel" name="ww2" [(ngModel)]="account.ww2" [appFieldMatches]="ww" type="password" class="form-control"
-                                id="ww2" required>
-                        <div [hidden]="ww2.valid || ww2.pristine" class="alert alert-danger">
+                        <label for="confirmPassword">Bevestiging wachtwoord</label>
+                        <input #confirmPassword="ngModel" name="confirmPassword" [(ngModel)]="account.confirmPassword" [appFieldMatches]="password" type="password" class="form-control"
+                               id="confirmPassword" required>
+                        <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
                             Wachtwoorden zijn niet gelijk
                         </div>
                     </div>

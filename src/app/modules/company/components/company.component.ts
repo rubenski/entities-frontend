@@ -19,8 +19,9 @@ export class CompanyComponent implements OnInit {
 
     }
 
+    // Triggers validation  on the password confirmation field when the user changes the 'first' password
     passwordChanged(form) {
-        form.controls.ww2.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+        form.controls.confirmPassword.updateValueAndValidity({ onlySelf: false, emitEvent: true });
     }
 
     ngOnInit(): void {
