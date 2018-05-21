@@ -8,8 +8,7 @@
                         <label for="name">Bedrijfsnaam</label>
                         <input #name="ngModel" name="name" [(ngModel)]="company.name" type="text" class="form-control"
                                id="name" required pattern="[\d\w\s!?-_@%&+.]+">
-                        <div [hidden]="name.valid || name.pristine"
-                             class="alert alert-danger">
+                        <div [hidden]="name.valid" class="alert alert-danger">
                             Bedrijfsnaam is ongeldig
                         </div>
                     </div>
@@ -57,20 +56,6 @@
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
-                        <label for="phone">Telefoonnummer</label>
-                        <input #phone="ngModel" name="phone" [(ngModel)]="company.phone" type="text"
-                               class="form-control" id="phone" required pattern="[\d\s+]{4,15}">
-                        <div [hidden]="phone.valid || phone.pristine"
-                             class="alert alert-danger">
-                            Telefoonnummer is ongeldig
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-9">
-                    <div class="form-group">
                         <label for="commerceNumber">KVK-nummer</label>
                         <input #commerceNumber="ngModel" name="commerceNumber" [(ngModel)]="company.commerceNumber"
                                type="text" class="form-control"
@@ -106,7 +91,8 @@
                 <div class="col-9">
                     <div class="form-group">
                         <label for="website">Website</label>
-                        <input #website="ngModel" name="website" [(ngModel)]="company.website" type="text" class="form-control"
+                        <input #website="ngModel" name="website" [(ngModel)]="company.website" type="text"
+                               class="form-control"
                                id="website"
                                pattern="^(http://|https://)?[\d\w._-]{2,40}(\.[\w]{2,3}){1,2}">
                     </div>
@@ -129,7 +115,7 @@
                     <div class="form-group">
                         <label for="firstName">Voornaam</label>
                         <input #firstName="ngModel" name="firstName" [(ngModel)]="account.firstName"
-                               type="text" class="form-control" id="firstName" required pattern="[\w\s-`]{2,20}">
+                               type="text" class="form-control" id="firstName" required pattern="[\w\s-']{2,20}">
                         <div [hidden]="firstName.valid || firstName.pristine" class="alert alert-danger">
                             Voornaam is ongeldig
                         </div>
@@ -141,7 +127,7 @@
                     <div class="form-group">
                         <label for="lastName">Achternaam</label>
                         <input #lastName="ngModel" name="lastName" [(ngModel)]="account.lastName"
-                               type="text" class="form-control" id="lastName" required pattern="[\w\s]{2,20}">
+                               type="text" class="form-control" id="lastName" required pattern="[\w\s-']{2,20}">
                         <div [hidden]="lastName.valid || lastName.pristine" class="alert alert-danger">
                             Achternaam is ongeldig
                         </div>
@@ -151,14 +137,29 @@
             <div class="row">
                 <div class="col-9">
                     <div class="form-group">
+                        <label for="phone">Telefoonnummer</label>
+                        <input #phone="ngModel" name="phone" [(ngModel)]="account.phone" type="text"
+                               class="form-control" id="phone" required pattern="[\d\s+]{10,20}">
+                        <div [hidden]="phone.valid || phone.pristine"
+                             class="alert alert-danger">
+                            Telefoonnummer is ongeldig
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9">
+                    <div class="form-group">
                         <label for="email">Email</label>
-                        <input appAccountAvailable appEmailValid #email="ngModel" name="email" [(ngModel)]="account.email"
+                        <input appAccountAvailable appEmailValid #email="ngModel" name="email"
+                               [(ngModel)]="account.email"
                                type="text" class="form-control" id="email" required>
-                        <div [hidden]="email.valid || email.pristine || email.errors?.wrongFormat" class="alert alert-danger">
+                        <div [hidden]="email.valid || email.pristine || email.errors?.wrongFormat"
+                             class="alert alert-danger">
                             Email is ongeldig
                         </div>
                         <div *ngIf="email.dirty && email.errors?.accountExists" class="alert alert-danger">
-                            {{email.errors.accountExists}}
+                            Emailadres is al in gebruik
                         </div>
                     </div>
                 </div>
@@ -168,7 +169,8 @@
                     <div class="form-group">
                         <label for="password">Wachtwoord</label>
                         <input #password="ngModel" name="password" [(ngModel)]="account.password"
-                               type="password" class="form-control" id="password" required (keyup)="passwordChanged(accountForm)" pattern="[\d\w+=_)(*&!$%,.@#/}{\^-]{8,20}">
+                               type="password" class="form-control" id="password" required
+                               (keyup)="passwordChanged(accountForm)" pattern="[\d\w+=_)(*&!$%,.@#/}{\^-]{8,20}">
                         <div [hidden]="password.valid || password.pristine || password.errors?.password"
                              class="alert alert-danger">
                             Wachtwoord moet minimaal 8 tekens lang zijn
@@ -180,7 +182,8 @@
                 <div class="col-9">
                     <div class="form-group">
                         <label for="confirmPassword">Bevestig wachtwoord</label>
-                        <input #confirmPassword="ngModel" name="confirmPassword" [(ngModel)]="account.confirmPassword" [appFieldMatches]="password" type="password" class="form-control"
+                        <input #confirmPassword="ngModel" name="confirmPassword" [(ngModel)]="account.confirmPassword"
+                               [appFieldMatches]="password" type="password" class="form-control"
                                id="confirmPassword" required>
                         <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
                             Wachtwoorden komen niet overeen

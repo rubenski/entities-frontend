@@ -13,7 +13,7 @@ export class SignUpComponent {
 
     public countries = [{code: 'NLD', name: 'Netherlands'}];
     public company: Company = Company.prefilled();
-    public account: Account = new Account();
+    public account: Account = Account.prefilled();
     public step = 1; // start at step 1
 
 
@@ -31,7 +31,7 @@ export class SignUpComponent {
 
     submitForm() {
         this.signUpService.signUp(new SignUpForm(this.account, this.company)).subscribe(res => {
-            return
+            return null;
         });
     }
 }

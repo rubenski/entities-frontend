@@ -15,7 +15,7 @@ export class SignupService {
         })
     };
 
-    private static FORM_SUBMIT_URL = '/api/user/company';
+    private static FORM_SUBMIT_URL = '/api/user/signup';
     private static EMAIL_EXISTS_URL = '/api/user/exists/';
 
 
