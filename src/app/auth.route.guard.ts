@@ -1,6 +1,6 @@
 import {CanActivate, GuardsCheckEnd, NavigationStart, Router} from '@angular/router';
 import {CookieService} from 'ngx-cookie-service';
-import {Injectable, state} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AuthService} from './modules/shared/auth.service';
 
 @Injectable()

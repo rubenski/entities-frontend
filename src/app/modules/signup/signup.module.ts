@@ -9,7 +9,7 @@ import {AccountAvailableValidatorDirective} from './account.available.validator.
 import {PasswordConfirmationValidatorDirective} from './pasword.confirmation.validator.directive';
 import {FieldMatchesValidatorDirective} from './fieldMatches.validator.directive';
 import {EmailValidatorDirective} from './email.validator.directive';
-import {EmailConfirmationComponent} from './components/signup.confirmation.component';
+import {SignupConfirmationComponent} from './components/signup.confirmation.component';
 
 @NgModule({
     imports: [
@@ -23,7 +23,7 @@ import {EmailConfirmationComponent} from './components/signup.confirmation.compo
         PasswordConfirmationValidatorDirective,
         FieldMatchesValidatorDirective,
         EmailValidatorDirective,
-        EmailConfirmationComponent
+        SignupConfirmationComponent
     ],
     providers: [SignupService, AuthRouteGuard]
 })

@@ -4,7 +4,8 @@ import {Component} from '@angular/core';
     moduleId: module.id,
     templateUrl: './signup.confirmation.component.html'
 })
-export class EmailConfirmationComponent {
+export class SignupConfirmationComponent {
+
 
 
 
