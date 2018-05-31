@@ -20,18 +20,20 @@ export class SignUpComponent {
     constructor(private signUpService: SignupService) {
     }
 
-// Triggers validation  on the password confirmation field when the user changes the 'first' password
+    // Triggers validation  on the password confirmation field when the user changes the 'first' password
     passwordChanged(form) {
-        form.controls.confirmPassword.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+        form.controls.confirmPassword.updateValueAndValidity({onlySelf: false, emitEvent: true});
     }
 
     goToStep(step): void {
-       this.step = step;
+        this.step = step;
     }
 
     submitForm() {
         this.signUpService.signUp(new SignUpForm(this.account, this.company)).subscribe(res => {
-            return null;
+            console.log("RES: " + res);
+        }, err => {
+            console.log("ERROR: " + err);
         });
     }
 }

@@ -6,8 +6,6 @@ import {
 import {SignupService} from './signup.service';
 import {Observable} from 'rxjs/Observable';
 
-
-
 export function checkAccountExists(signupService: SignupService): AsyncValidatorFn {
     return (control: AbstractControl): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> => {
         const debounceTime = 500; // milliseconds
@@ -49,9 +47,6 @@ export class AccountAvailableValidatorDirective implements AsyncValidator {
     @HostListener('mouseout')
     onMouseOut() {
         const part = this.el.nativeElement.querySelector('.card-text');
-        // this.renderer.setStyle(part, 'display', 'none');
     }
-
-
 }
 

@@ -154,11 +154,11 @@
                         <input appAccountAvailable appEmailValid #email="ngModel" name="email"
                                [(ngModel)]="account.email"
                                type="text" class="form-control" id="email" required>
-                        <div [hidden]="email.valid || email.pristine || email.errors?.wrongFormat"
+                        <div [hidden]="email.valid || email.pristine || !email.errors?.wrongFormat"
                              class="alert alert-danger">
                             Email is ongeldig
                         </div>
-                        <div *ngIf="email.dirty && email.errors?.accountExists" class="alert alert-danger">
+                        <div *ngIf="email.errors?.accountExists" class="alert alert-danger">
                             Emailadres is al in gebruik
                         </div>
                     </div>
