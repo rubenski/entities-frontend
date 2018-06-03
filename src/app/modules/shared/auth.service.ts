@@ -12,9 +12,12 @@ export class AuthService {
         headers: new HttpHeaders({
             'Content-Type': 'application/x-www-form-urlencoded',
             'Authorization': 'Basic ' + btoa(TOKEN_AUTH_USERNAME + ':' + TOKEN_AUTH_PASSWORD),
-            'withCredentials': 'true'
+            'withCredentials': 'true',
+            'observe' : 'response'
         })
     };
+
+
     private static URL_AUTH_TOKEN = '/iam/oauth/token';
     private static URL_LOGOUT = '/iam/logout';
     private redirUrl: string;
@@ -23,30 +26,17 @@ export class AuthService {
     constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) {
     }
 
-    redirectUrl(url: string) {
+    setRedirectUrl(url: string) {
         this.redirUrl = url;
     }
 
+    getRedirectUrl() {
+        return this.redirUrl;
+    }
+
     login(username: string, password: string) {
-
-        console.log('log in!');
-
         const body = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}&grant_type=password`;
-
-
-        this.http.post(AuthService.URL_AUTH_TOKEN, body, AuthService.HTTP_DEFAULT_OPTIONS).subscribe(res => {
-                console.log(res);
-                if (this.redirUrl) {
-                    this.router.navigate([this.redirUrl]);
-                    // Clear redirect url after redirecting
-                    this.redirUrl = null;
-                } else {
-                    this.router.navigate(['/']);
-                }
-            },
-            error => {
-                console.log('error');
-            });
+        return this.http.post(AuthService.URL_AUTH_TOKEN, body, AuthService.HTTP_DEFAULT_OPTIONS);
     }
 
     refreshAccessToken(): Observable<{}> {

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ServiceCallWrapper} from "../../service.call.wrapper";
-import {Observable} from "rxjs/Observable";
+import {ServiceCallWrapper} from '../../service.call.wrapper';
+import {Observable} from 'rxjs/Observable';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})

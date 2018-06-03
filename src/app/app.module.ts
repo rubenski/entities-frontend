@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AppComponent} from './app.component';
 import {FormsModule} from '@angular/forms';
@@ -16,6 +16,7 @@ import {DynamicFormModule} from './modules/dynamicform/dynamic.form.module';
 import {ErrorInterceptor} from './expired.token.interceptor';
 import {ServiceCallWrapper} from './service.call.wrapper';
 import {CompanyModule} from './modules/signup/signup.module';
+import {GlobalErrorHandler} from './global.error.handler';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,10 @@ import {CompanyModule} from './modules/signup/signup.module';
             provide: HTTP_INTERCEPTORS,
             useClass: ErrorInterceptor,
             multi: true
+        },
+        {
+            provide: ErrorHandler,
+            useClass: GlobalErrorHandler
         },
         CookieService,
         ServiceCallWrapper

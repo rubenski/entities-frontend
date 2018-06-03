@@ -13,7 +13,7 @@ export class AuthRouteGuard implements CanActivate {
             if (e instanceof GuardsCheckEnd) {
                 if (!e.shouldActivate) {
                     console.log('AuthRouteGuard says nooo');
-                    this.loginService.redirectUrl(e.url);
+                    this.loginService.setRedirectUrl(e.url);
                     this.router.navigate(['/login']);
                 }
             }
